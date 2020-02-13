@@ -1,0 +1,20 @@
+{
+  "name": "web_memo",
+  "version": "1.0.0",
+  "description": "ES6 공부를 위해 브라우저에서 메모장 기능을 구현",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leesukkyu/web_memo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leesukkyu/web_memo/issues"
+  },
+  "homepage": "https://github.com/leesukkyu/web_memo#readme"
+}
