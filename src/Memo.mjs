@@ -86,18 +86,6 @@ class Memo {
     return TEMPLATE;
   }
 
-  // 고유값 생성
-  getUUID() {
-    let dt, uuid;
-    dt = new Date().getTime();
-    uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
-      let r = (dt + Math.random() * 16) % 16 | 0;
-      dt = Math.floor(dt / 16);
-      return (c == "x" ? r : (r & 0x3) | 0x8).toString(16);
-    });
-    return uuid;
-  }
-
   /**
    * @description 메모 UI 이벤트 관리
    * memo wrapper 안에서는 버블링으로 리스너가 동작한다.
@@ -191,15 +179,6 @@ class Memo {
       this.option.map[this.uuid].$el.addClass("active");
     }
   }
-
-  clearSelection() {
-    if (window.getSelection) {
-      window.getSelection().removeAllRanges();
-    } else if (document.selection) {
-      document.selection.empty();
-    }
-  }
-
   // 메모의 부적절한 위치 파악
   static isErrorPoition(memoObj) {
     let ExtraValue = 50;
@@ -209,6 +188,29 @@ class Memo {
       parseInt(memoObj.$el.css("left"), 10) + ExtraValue > memoObj.option.$wrap.width() || // 너무 우측으로 간 경우
       parseInt(memoObj.$el.css("left"), 10) + memoObj.$el.width() - ExtraValue < 0 // 너무 좌측으로 간 경우
     );
+  }
+  
+  // TODO: 유틸들 외부로 빼기
+  
+  // 드래그시 셀렉션 
+  clearSelection() {
+    if (window.getSelection) {
+      window.getSelection().removeAllRanges();
+    } else if (document.selection) {
+      document.selection.empty();
+    }
+  }
+  
+  // 고유값 생성
+  getUUID() {
+    let dt, uuid;
+    dt = new Date().getTime();
+    uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
+      let r = (dt + Math.random() * 16) % 16 | 0;
+      dt = Math.floor(dt / 16);
+      return (c == "x" ? r : (r & 0x3) | 0x8).toString(16);
+    });
+    return uuid;
   }
 }
 
